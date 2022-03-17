@@ -1,0 +1,67 @@
+rect = {}
+rect.x = 300
+rect.y = 400
+rect.l = 300
+rect.h = 60
+rect.colorR = 40
+rect.colorG = 90
+rect.colorB = 0
+
+rect2 = {}
+rect2.l = 100
+rect2.h = 400
+
+rect.draw = function()
+  love.graphics.setColor(rect.colorR,rect.colorG,rect.colorB)
+  love.graphics.rectangle("fill",rect.x,rect.y,rect.l,rect.h)
+  love.graphics.setColor(0,0,0)
+  
+end
+
+rect2.draw = function()
+  love.graphics.setColor(200,0,200)
+  love.graphics.rectangle("fill",love.mouse.getX(),love.mouse.getY(),rect2.l,rect2.h)
+  love.graphics.setColor(0,0,0)
+end
+
+
+
+
+rect.isIn = function(x,y)
+  if x > rect.x-rect2.l and x < rect.x + rect.l and y > rect.y-rect2.h and y < rect.y+rect.h then
+    return true
+  else
+    return false
+    end
+end
+
+rect.update = function(objetx,objety)
+  if rect.isIn(objetx,objety) then
+    rect.colorR = 40
+    rect.colorG = 90
+    rect.colorB = 100
+  else
+    rect.colorR = 40
+    rect.colorG = 90
+    rect.colorB = 0
+    
+  end
+end
+
+function love.load()
+  love.window.setMode(800,600)
+  
+  
+end
+
+function love.update(dt)
+  rect.update(love.mouse.getX(),love.mouse.getY())
+  
+end
+
+function love.draw()
+    rect2.draw()
+  rect.draw()
+  
+end
+

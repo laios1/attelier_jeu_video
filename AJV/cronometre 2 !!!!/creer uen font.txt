@@ -1,0 +1,5 @@
+chrono = {}
+  chrono.fontName  = "chiffres.png"
+  chrono.chars     = "@ 0123456789+-:"
+  chrono.spacing   = 8
+  chrono.font      = love.graphics.newImageFont(  chrono.fontName , chrono.chars , chrono.spacing )
